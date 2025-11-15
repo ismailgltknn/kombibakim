@@ -18,7 +18,7 @@ const KombiInstallation: React.FC = () => {
   return (
     <Layout>
       <SEO
-        title="Kombi Montaj | Ankara Profesyonel Kombi Servisi"
+        title="Kombi Montaj | Ankara Kombi Servisi"
         description="Yeni kombi montaj hizmeti ile güvenli ve hızlı kurulum sağlayın. Uzman ekip, orijinal malzeme kullanımı ve garantili işçilik."
         keywords="kombi montaj, kombi kurulumu, yeni kombi montajı, profesyonel montaj"
       />

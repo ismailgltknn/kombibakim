@@ -18,7 +18,7 @@ const RadiatorCleaning: React.FC = () => {
   return (
     <Layout>
       <SEO
-        title="Petek Temizliği | Ankara Profesyonel Kombi Servisi"
+        title="Petek Temizliği | Ankara Kombi Servisi"
         description="Petek temizliği hizmeti ile enerji tasarrufu ve verimli ısınma sağlayın. Uzman ekip, hızlı servis ve garantili işçilik."
         keywords="petek temizliği, kombi petek temizliği, radyatör temizliği, enerji tasarrufu"
       />

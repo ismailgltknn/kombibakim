@@ -57,7 +57,7 @@ export default function AnkaraDistricts() {
   return (
     <Layout>
       <SEO
-        title="Ankara İlçeleri Kombi Servisi | Tüm İlçelere Hizmet"
+        title="Servis Bölgelerimiz | Ankara Kombi Servisi"
         description="Ankara'nın tüm ilçelerinde profesyonel kombi servisi. Çankaya, Keçiören, Yenimahalle, Mamak, Etimesgut, Sincan ve diğer ilçelerde 7/24 hizmet."
         keywords="ankara kombi servisi, etimesgut kombi, sincan kombi, çankaya kombi, keçiören kombi, yenimahalle kombi"
       />
@@ -65,16 +65,17 @@ export default function AnkaraDistricts() {
 
       <div className="bg-white">
         {/* HERO SECTION */}
-        <section className="bg-gradient-to-r from-orange-500 to-red-600 text-white py-20">
+        <section className="bg-gradient-to-r from-orange-500 to-red-600 text-white py-16">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
-              <MapPin className="w-16 h-16 mx-auto mb-6 drop-shadow" />
-              <h1 className="text-5xl md:text-6xl font-extrabold mb-6 drop-shadow-lg">
-                Ankara İlçeleri Kombi Servisi
+              <MapPin className="w-16 h-16 mx-auto mb-6 drop-shadow-lg" />
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 drop-shadow-lg">
+                Ankara Servis Bölgeleri
               </h1>
-              <p className="text-xl md:text-2xl text-orange-100/90 drop-shadow-sm">
-                Ankara'nın tüm ilçelerinde 7/24 hızlı, güvenilir ve profesyonel
-                servis
+              <p className="text-lg md:text-xl text-orange-100/90 drop-shadow-sm max-w-2xl mx-auto">
+                Ankara'nın tüm ilçelerinde kombi bakımı, kombi tamiri, petek
+                temizliği ve kombi montajı hizmetlerimizle 7/24 hızlı ve
+                güvenilir servis sağlıyoruz.
               </p>
             </div>
           </div>

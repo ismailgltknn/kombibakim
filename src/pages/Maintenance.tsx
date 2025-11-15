@@ -20,7 +20,7 @@ export default function Maintenance() {
   return (
     <Layout>
       <SEO
-        title="Kombi Bakım Hizmeti | Ankara Profesyonel Kombi Servisi"
+        title="Kombi Bakım Hizmeti | Ankara Kombi Servisi"
         description="Profesyonel kombi bakım hizmeti ile cihazınızın performansını artırın. Düzenli bakım, temizlik, kontrol ve enerji tasarrufu sağlayan çözümler. Uygun fiyat ve garantili işçilik."
         keywords="kombi bakım, kombi bakım hizmeti, kombi temizliği, profesyonel kombi bakımı"
       />

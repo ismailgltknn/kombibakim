@@ -95,7 +95,7 @@ export default function Homepage() {
         {/* HERO BACKGROUND */}
         <div className="absolute inset-0 overflow-hidden">
           <img
-            src="/images/hero-bg.png"
+            src="/images/ankara-kombi-servisi.png"
             alt="Ankara kombi servisi teknisyeni"
             className="w-full h-full object-cover object-center opacity-60 transition-transform duration-700 ease-in-out transform group-hover:scale-105"
           />
@@ -113,26 +113,41 @@ export default function Homepage() {
               hızlı, güvenilir ve garantili çözümler sunuyoruz.
             </p>
 
-            {/* CTA BUTTONS */}
             <div className="flex flex-col sm:flex-row justify-center gap-4 mb-10">
+              {/* Hemen Ara */}
               <Button
                 asChild
                 size="lg"
-                className="bg-orange-500 hover:bg-orange-600 text-white font-semibold text-lg px-10 py-6 shadow-lg shadow-orange-500/30 rounded-full transition-all"
+                className="bg-gradient-to-r from-orange-500 to-red-500 text-white font-semibold text-lg px-10 py-6 shadow-lg hover:from-orange-600 hover:to-red-600 hover:shadow-2xl rounded-full transition-all"
               >
-                <a href="tel:+905539354340">
-                  <Phone className="w-5 h-5 mr-2 inline-block" />
+                <a href="tel:+905539354340" className="flex items-center gap-2">
+                  <Phone className="w-5 h-5" />
                   0553 935 43 40 — Hemen Ara
                 </a>
               </Button>
 
+              {/* Bizimle İletişime Geçin */}
               <Button
                 asChild
                 size="lg"
                 variant="outline"
-                className="border-white text-gray-900 bg-white/90 hover:bg-white text-lg px-10 py-6 rounded-full transition-all shadow-md"
+                className="
+                  border border-orange-500 text-gray-300
+                  font-semibold text-lg px-10 py-6 rounded-full
+                  bg-white/20
+                  backdrop-blur-sm
+                  transition-all duration-300
+                  hover:bg-gradient-to-r hover:from-orange-500 hover:to-red-500
+                  hover:text-white hover:shadow-lg
+                  flex items-center justify-center gap-2
+                "
               >
-                <Link to="/iletisim">Servis Çağır</Link>
+                <Link to="/iletisim" className="flex items-center gap-1">
+                  Bizimle İletişime Geçin
+                  <span className="inline-block transform transition-transform duration-300 group-hover:translate-x-1">
+                    →
+                  </span>
+                </Link>
               </Button>
             </div>
 

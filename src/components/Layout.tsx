@@ -1,8 +1,8 @@
 import { ReactNode, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Phone, Menu, X } from "lucide-react";
+import { Phone, Menu, X, ArrowUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { ArrowUp } from "lucide-react";
+import WhatsAppIcon from "@/components/WhatsAppIcon";
 
 interface LayoutProps {
   children: ReactNode;
@@ -37,7 +37,7 @@ export default function Layout({ children }: LayoutProps) {
     { href: "/", label: "Ana Sayfa" },
     { href: "/hakkimizda", label: "Hakkımızda" },
     { href: "/hizmetler", label: "Hizmetler" },
-    { href: "/kombi-servisi-ankara", label: "Ankara İlçeleri" },
+    { href: "/kombi-servisi-ankara", label: "Servis Bölgeleri" },
     { href: "/sss", label: "SSS" },
     { href: "/iletisim", label: "İletişim" },
   ];
@@ -96,10 +96,21 @@ export default function Layout({ children }: LayoutProps) {
               <Button
                 asChild
                 size="sm"
-                className="hidden sm:flex px-5 py-2 rounded-sm font-semibold text-white bg-gradient-to-r from-orange-500 to-red-500 shadow-md hover:from-orange-600 hover:to-red-600 hover:shadow-lg transition-all"
+                className="
+                  hidden sm:flex
+                  px-6 py-3
+                  rounded-sm
+                  font-semibold text-white
+                  bg-gradient-to-r from-orange-500 to-red-500
+                  shadow-lg
+                  hover:from-orange-600 hover:to-red-600
+                  hover:shadow-2xl
+                  transform transition-all duration-300
+                  active:scale-95
+                "
               >
-                <a href="tel:+905539354340" className="flex items-center gap-2">
-                  <Phone className="w-4 h-4" />
+                <a href="tel:+905539354340" className="flex items-center gap-3">
+                  <Phone className="w-5 h-5" />
                   Hemen Ara
                 </a>
               </Button>
@@ -287,6 +298,29 @@ export default function Layout({ children }: LayoutProps) {
           <ArrowUp className="w-5 h-5" />
         </button>
       )}
+
+      {/* WhatsApp Icon */}
+      <div className="fixed bottom-12 left-6 md:left-10 z-50 animate-bounce-whatsapp flex items-center gap-2">
+        <a
+          href="https://wa.me/905539354340"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="WhatsApp"
+        >
+          {/* WhatsApp SVG */}
+          <WhatsAppIcon className="w-14 h-14" />
+        </a>
+        {/* Text */}
+        <a
+          href="https://wa.me/905539354340"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-green-600 text-white font-semibold px-4 py-2 rounded-full shadow-md hover:scale-105 transition-transform duration-300"
+          aria-label="WhatsApp'tan bize ulaşın"
+        >
+          WhatsApp'tan bize ulaşın
+        </a>
+      </div>
     </div>
   );
 }

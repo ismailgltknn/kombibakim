@@ -12,14 +12,14 @@ export default function SEO({
   title,
   description,
   keywords,
-  ogImage = "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1200&q=80",
+  ogImage = "/images/ankara-kombi-servisi.png",
   canonical,
 }: SEOProps) {
   useEffect(() => {
-    // Set title
+    // Set document title
     document.title = title;
 
-    // Set meta tags
+    // Meta etiketleri
     const metaTags = [
       { name: "description", content: description },
       { name: "keywords", content: keywords || "" },
@@ -27,6 +27,7 @@ export default function SEO({
       { property: "og:description", content: description },
       { property: "og:image", content: ogImage },
       { property: "og:type", content: "website" },
+      { property: "og:locale", content: "tr_TR" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
@@ -34,7 +35,9 @@ export default function SEO({
     ];
 
     metaTags.forEach(({ name, property, content }) => {
-      const selector = name ? `meta[name="${name}"]` : `meta[property="${property}"]`;
+      const selector = name
+        ? `meta[name="${name}"]`
+        : `meta[property="${property}"]`;
       let element = document.querySelector(selector);
 
       if (!element) {
@@ -47,7 +50,7 @@ export default function SEO({
       element.setAttribute("content", content);
     });
 
-    // Set canonical URL
+    // Canonical URL
     if (canonical) {
       let linkElement = document.querySelector('link[rel="canonical"]');
       if (!linkElement) {

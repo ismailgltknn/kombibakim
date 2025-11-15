@@ -20,7 +20,7 @@ export default function Repair() {
   return (
     <Layout>
       <SEO
-        title="Kombi Tamir Hizmeti | Profesyonel Arıza Tespiti ve Onarım"
+        title="Kombi Tamir Hizmeti | Ankara Kombi Servisi"
         description="Kombi arızalarına hızlı çözümler. Profesyonel tamir hizmeti, orijinal yedek parça, garantili işçilik ve aynı gün servis imkanı."
         keywords="kombi tamir, kombi arıza tamiri, profesyonel kombi onarım, kombi servis"
       />
