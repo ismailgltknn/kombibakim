@@ -26,7 +26,7 @@ export default function Contact() {
     <Layout>
       <SEO
         title="İletişim | Ankara Kombi Servisi"
-        description="Ankara Kombi Servisi ile iletişime geçin. 7/24 acil servis hattı: 0555 123 45 67. Kombi bakım ve tamir için hemen arayın."
+        description="Ankara Kombi Servisi ile iletişime geçin. 7/24 acil servis hattı: 0553 935 43 40. Kombi bakım ve tamir için hemen arayın."
         keywords="ankara kombi servisi iletişim, kombi servisi telefon, acil kombi servisi"
       />
 
@@ -77,7 +77,7 @@ export default function Contact() {
                       onChange={(e) =>
                         setFormData({ ...formData, phone: e.target.value })
                       }
-                      placeholder="0555 123 45 67"
+                      placeholder="0553 935 43 40"
                     />
                   </div>
 
@@ -136,10 +136,10 @@ export default function Contact() {
                             Telefon
                           </h3>
                           <a
-                            href="tel:+905551234567"
+                            href="tel:+905539354340"
                             className="text-orange-600 hover:text-orange-700 font-medium"
                           >
-                            0555 123 45 67
+                            0553 935 43 40
                           </a>
                           <p className="text-sm text-gray-600 mt-1">
                             7/24 Acil Servis Hattı

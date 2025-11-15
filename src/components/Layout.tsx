@@ -37,7 +37,7 @@ export default function Layout({ children }: LayoutProps) {
             {/* Logo */}
             <Link to="/" className="flex items-center space-x-2">
               <div className="w-10 h-10 bg-gradient-to-br from-orange-500 to-red-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xl">AK</span>
+                <span className="text-white font-bold text-md">Logo</span>
               </div>
               <span className="font-bold text-xl text-gray-900 hidden sm:block">
                 Ankara Kombi Servisi
@@ -68,7 +68,7 @@ export default function Layout({ children }: LayoutProps) {
                 size="sm"
                 className="hidden sm:flex bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700"
               >
-                <a href="tel:+905551234567">
+                <a href="tel:+905539354340">
                   <Phone className="w-4 h-4 mr-2" />
                   Hemen Ara
                 </a>
@@ -113,7 +113,7 @@ export default function Layout({ children }: LayoutProps) {
                   size="sm"
                   className="bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 sm:hidden"
                 >
-                  <a href="tel:+905551234567">
+                  <a href="tel:+905539354340">
                     <Phone className="w-4 h-4 mr-2" />
                     Hemen Ara
                   </a>
@@ -137,17 +137,17 @@ export default function Layout({ children }: LayoutProps) {
                 Ankara Kombi Servisi
               </h3>
               <p className="text-sm mb-4">
-                Ankara'nın tüm ilçelerinde 7/24 profesyonel kombi bakım ve
-                tamir hizmeti.
+                Ankara'nın tüm ilçelerinde 7/24 profesyonel kombi bakım ve tamir
+                hizmeti.
               </p>
               <Button
                 asChild
                 size="sm"
                 className="bg-orange-500 hover:bg-orange-600"
               >
-                <a href="tel:+905551234567">
+                <a href="tel:+905539354340">
                   <Phone className="w-4 h-4 mr-2" />
-                  0555 123 45 67
+                  0553 935 43 40
                 </a>
               </Button>
             </div>
@@ -223,7 +223,7 @@ export default function Layout({ children }: LayoutProps) {
             <div>
               <h4 className="text-white font-semibold mb-4">İletişim</h4>
               <ul className="space-y-2 text-sm">
-                <li>Telefon: 0555 123 45 67</li>
+                <li>Telefon: 0553 935 43 40</li>
                 <li>Email: info@ankarakombi.com</li>
                 <li>Adres: Ankara, Türkiye</li>
                 <li>Çalışma Saatleri: 7/24</li>

@@ -71,7 +71,7 @@ export default function Homepage() {
             className="w-full h-full object-cover"
           />
         </div>
-        
+
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
@@ -86,9 +86,9 @@ export default function Homepage() {
                 size="lg"
                 className="bg-white text-orange-600 hover:bg-gray-100 text-lg px-8"
               >
-                <a href="tel:+905551234567">
+                <a href="tel:+905539354340">
                   <Phone className="w-5 h-5 mr-2" />
-                  Hemen Ara: 0555 123 45 67
+                  Hemen Ara: 0553 935 43 40
                 </a>
               </Button>
               <Button
@@ -142,12 +142,16 @@ export default function Homepage() {
                 {/* Service Image Area */}
                 <div className="h-48 bg-gradient-to-br from-orange-100 to-red-100 relative overflow-hidden">
                   <img
-                    src={`https://images.unsplash.com/photo-${index === 0 ? '1621905251918-48416bd8575a' : '1581092918056-0c4c3acd4789'}?w=800&q=80`}
+                    src={`https://images.unsplash.com/photo-${
+                      index === 0
+                        ? "1621905251918-48416bd8575a"
+                        : "1581092918056-0c4c3acd4789"
+                    }?w=800&q=80`}
                     alt={service.title}
                     className="w-full h-full object-cover opacity-70"
                   />
                 </div>
-                
+
                 <CardContent className="p-8">
                   <service.icon className="w-12 h-12 text-orange-500 mb-4" />
                   <h3 className="text-2xl font-bold text-gray-900 mb-3">
@@ -208,7 +212,7 @@ export default function Homepage() {
             className="w-full h-full object-cover"
           />
         </div>
-        
+
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
@@ -258,9 +262,9 @@ export default function Homepage() {
             size="lg"
             className="bg-white text-orange-600 hover:bg-gray-100 text-lg px-8"
           >
-            <a href="tel:+905551234567">
+            <a href="tel:+905539354340">
               <Phone className="w-5 h-5 mr-2" />
-              0555 123 45 67
+              0553 935 43 40
             </a>
           </Button>
         </div>

@@ -41,9 +41,9 @@ export default function Repair() {
                 size="lg"
                 className="bg-white text-orange-600 hover:bg-gray-100"
               >
-                <a href="tel:+905551234567">
+                <a href="tel:+905539354340">
                   <Phone className="w-5 h-5 mr-2" />
-                  Acil Servis: 0555 123 45 67
+                  Acil Servis: 0553 935 43 40
                 </a>
               </Button>
             </div>
@@ -59,8 +59,8 @@ export default function Repair() {
                 </h2>
                 <p className="text-lg text-gray-700 mb-4">
                   Kombilerinizde meydana gelen arızalar için 7/24 hızlı ve
-                  güvenilir tamir hizmeti sunuyoruz. Uzman teknisyenlerimiz,
-                  tüm marka ve modellerde arıza tespiti ve onarım konusunda
+                  güvenilir tamir hizmeti sunuyoruz. Uzman teknisyenlerimiz, tüm
+                  marka ve modellerde arıza tespiti ve onarım konusunda
                   deneyimlidir.
                 </p>
                 <p className="text-lg text-gray-700">
@@ -100,9 +100,9 @@ export default function Repair() {
                     size="lg"
                     className="bg-gradient-to-r from-orange-500 to-red-600"
                   >
-                    <a href="tel:+905551234567">
+                    <a href="tel:+905539354340">
                       <Phone className="w-5 h-5 mr-2" />
-                      0555 123 45 67
+                      0553 935 43 40
                     </a>
                   </Button>
                 </div>

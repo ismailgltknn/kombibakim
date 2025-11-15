@@ -56,9 +56,9 @@ export default function DistrictPage() {
                 size="lg"
                 className="bg-white text-orange-600 hover:bg-gray-100"
               >
-                <a href="tel:+905551234567">
+                <a href="tel:+905539354340">
                   <Phone className="w-5 h-5 mr-2" />
-                  Hemen Ara: 0555 123 45 67
+                  Hemen Ara: 0553 935 43 40
                 </a>
               </Button>
             </div>
@@ -113,9 +113,9 @@ export default function DistrictPage() {
                   size="lg"
                   className="bg-gradient-to-r from-orange-500 to-red-600"
                 >
-                  <a href="tel:+905551234567">
+                  <a href="tel:+905539354340">
                     <Phone className="w-5 h-5 mr-2" />
-                    0555 123 45 67
+                    0553 935 43 40
                   </a>
                 </Button>
               </div>

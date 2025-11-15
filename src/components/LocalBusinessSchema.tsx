@@ -10,7 +10,7 @@ interface LocalBusinessSchemaProps {
 export default function LocalBusinessSchema({
   name = "Ankara Kombi Servisi",
   description = "Ankara'nın tüm ilçelerinde profesyonel kombi bakım ve tamir hizmeti",
-  telephone = "+905551234567",
+  telephone = "+905539354340",
   areaServed = [
     "Çankaya",
     "Keçiören",
