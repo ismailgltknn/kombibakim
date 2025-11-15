@@ -8,6 +8,7 @@ import {
   Phone,
   Clock,
   Shield,
+  ActivitySquare,
   Wrench,
   CheckCircle,
   MapPin,
@@ -19,15 +20,17 @@ export default function Homepage() {
       title: "Kombi Bakım",
       description:
         "Düzenli bakım ile kombininizin ömrünü uzatın ve verimli çalışmasını sağlayın.",
-      icon: Wrench,
+      icon: ActivitySquare,
       link: "/hizmetler/bakim",
+      image: "/images/kombi-bakim-ankara.png",
     },
     {
       title: "Kombi Tamir",
       description:
         "Arızalı kombileriniz için hızlı ve güvenilir tamir hizmeti sunuyoruz.",
-      icon: Shield,
+      icon: Wrench,
       link: "/hizmetler/tamir",
+      image: "/images/kombi-tamir-ankara.png",
     },
   ];
 
@@ -52,6 +55,29 @@ export default function Homepage() {
     "Aynı Gün Hizmet",
   ];
 
+  function toSlug(str) {
+    const map = {
+      ç: "c",
+      Ç: "c",
+      ğ: "g",
+      Ğ: "g",
+      ü: "u",
+      Ü: "u",
+      ş: "s",
+      Ş: "s",
+      ö: "o",
+      Ö: "o",
+      ı: "i",
+      İ: "i",
+    };
+    return str
+      .split("")
+      .map((char) => map[char] || char)
+      .join("")
+      .toLowerCase()
+      .replace(/\s+/g, "-"); // boşluk varsa tire ile değiştir
+  }
+
   return (
     <Layout>
       <SEO
@@ -59,121 +85,171 @@ export default function Homepage() {
         description="Ankara'nın tüm ilçelerinde 7/24 profesyonel kombi bakım ve tamir hizmeti. Uzman kadro, uygun fiyat, garantili işçilik. Hemen arayın!"
         keywords="ankara kombi servisi, kombi bakım ankara, kombi tamir ankara, kombi servisi"
       />
+
       <LocalBusinessSchema />
 
-      {/* Hero Section with Background Image */}
-      <section className="relative bg-gradient-to-br from-orange-500 via-red-500 to-red-600 text-white py-20 overflow-hidden">
-        {/* Background Image Area */}
-        <div className="absolute inset-0 opacity-20">
+      {/* HERO */}
+      <section className="relative w-full bg-gray-900 text-white overflow-hidden group">
+        {/* HERO BACKGROUND */}
+        <div className="absolute inset-0 overflow-hidden">
           <img
-            src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1200&q=80"
-            alt="Kombi Servisi"
-            className="w-full h-full object-cover"
+            src="/images/hero-bg.png"
+            alt="Ankara kombi servisi teknisyeni"
+            className="w-full h-full object-cover object-center opacity-60 transition-transform duration-700 ease-in-out transform group-hover:scale-105"
           />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/80"></div>
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              Ankara'da Güvenilir Kombi Servisi
+          <div className="max-w-3xl mx-auto text-center py-24 md:py-32">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6">
+              Ankara'da 7/24 Profesyonel Kombi Servisi
             </h1>
-            <p className="text-xl md:text-2xl mb-8 text-orange-50">
-              7/24 Profesyonel Kombi Bakım ve Tamir Hizmeti
+            <p className="text-lg md:text-xl text-gray-200 leading-relaxed mb-10">
+              Uzman teknisyen kadromuzla <strong>kombi bakım</strong>,
+              <strong> tamir</strong> ve <strong>arıza</strong> hizmetlerinde
+              hızlı, güvenilir ve garantili çözümler sunuyoruz.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+
+            {/* CTA BUTTONS */}
+            <div className="flex flex-col sm:flex-row justify-center gap-4 mb-10">
               <Button
                 asChild
                 size="lg"
-                className="bg-white text-orange-600 hover:bg-gray-100 text-lg px-8"
+                className="bg-orange-500 hover:bg-orange-600 text-white font-semibold text-lg px-10 py-6 shadow-lg shadow-orange-500/30 rounded-full transition-all"
               >
                 <a href="tel:+905539354340">
-                  <Phone className="w-5 h-5 mr-2" />
-                  Hemen Ara: 0553 935 43 40
+                  <Phone className="w-5 h-5 mr-2 inline-block" />
+                  0553 935 43 40 — Hemen Ara
                 </a>
               </Button>
+
               <Button
                 asChild
                 size="lg"
                 variant="outline"
-                className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-orange-600 text-lg px-8"
+                className="border-white text-gray-900 bg-white/90 hover:bg-white text-lg px-10 py-6 rounded-full transition-all shadow-md"
               >
                 <Link to="/iletisim">Servis Çağır</Link>
               </Button>
+            </div>
+
+            {/* TRUST BADGE */}
+            <div className="flex items-center justify-center gap-3 text-gray-300 text-sm">
+              <CheckCircle className="w-5 h-5 text-green-400" />
+              <span>1000+ mutlu müşteri • Aynı gün servis</span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-16 bg-white">
+      {/* WHY US */}
+      <section className="py-16 bg-gray-50 text-gray-900">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            {features.map((feature, index) => (
-              <Card key={index} className="text-center border-orange-100">
-                <CardContent className="pt-6">
-                  <CheckCircle className="w-8 h-8 text-orange-500 mx-auto mb-2" />
-                  <p className="text-sm font-medium text-gray-700">{feature}</p>
-                </CardContent>
-              </Card>
+          <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-12">
+            Neden Bizi Seçmelisiniz?
+          </h2>
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {[
+              {
+                icon: Clock,
+                title: "7/24 Hizmet",
+                desc: "Hafta sonu ve tatil günleri dahil her zaman yanınızdayız.",
+              },
+              {
+                icon: Shield,
+                title: "Garantili İşçilik",
+                desc: "Tüm hizmetlerimizde işçilik garantisi sunuyoruz.",
+              },
+              {
+                icon: Wrench,
+                title: "Uzman Kadro",
+                desc: "Deneyimli ve sertifikalı teknisyenlerimizle hizmetinizdeyiz.",
+              },
+            ].map((item, idx) => (
+              <div
+                key={idx}
+                className="flex flex-col items-center text-center bg-white rounded-2xl p-6 shadow-md transition-transform duration-300 hover:scale-105 hover:shadow-xl"
+                role="region"
+                aria-label={item.title}
+              >
+                <item.icon
+                  className="w-14 h-14 text-orange-500 mb-4"
+                  aria-hidden="true"
+                />
+                <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+                <p className="text-gray-600">{item.desc}</p>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Services Section with Images */}
-      <section className="py-16 bg-gray-50">
+      {/* SERVICES */}
+      <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">
               Hizmetlerimiz
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Kombileriniz için ihtiyacınız olan tüm hizmetleri profesyonel
-              ekibimizle sunuyoruz.
+              Ankara genelinde kombi bakım, onarım ve teknik servis hizmetlerini
+              uzman teknisyenlerimizle hızlı ve güvenilir şekilde sunuyoruz.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {services.map((service, index) => (
-              <Card
-                key={index}
-                className="hover:shadow-lg transition-shadow border-orange-100 overflow-hidden"
+          <div className="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+            {services.map((service, idx) => (
+              <Link
+                to={service.link}
+                key={idx}
+                className="group cursor-pointer transition-all duration-300 rounded-2xl border border-gray-200 overflow-hidden bg-white hover:shadow-2xl hover:-translate-y-1"
               >
-                {/* Service Image Area */}
-                <div className="h-48 bg-gradient-to-br from-orange-100 to-red-100 relative overflow-hidden">
+                {/* Image */}
+                <div className="h-56 relative overflow-hidden">
                   <img
-                    src={`https://images.unsplash.com/photo-${
-                      index === 0
-                        ? "1621905251918-48416bd8575a"
-                        : "1581092918056-0c4c3acd4789"
-                    }?w=800&q=80`}
-                    alt={service.title}
-                    className="w-full h-full object-cover opacity-70"
+                    src={service.image}
+                    alt={`${service.title} | Ankara Kombi Servisi`}
+                    loading="lazy"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
 
+                {/* Card Content */}
                 <CardContent className="p-8">
                   <service.icon className="w-12 h-12 text-orange-500 mb-4" />
+
                   <h3 className="text-2xl font-bold text-gray-900 mb-3">
                     {service.title}
                   </h3>
-                  <p className="text-gray-600 mb-6">{service.description}</p>
-                  <Button asChild variant="outline" className="w-full">
-                    <Link to={service.link}>Detaylı Bilgi</Link>
+
+                  <p className="text-gray-600 leading-relaxed mb-6">
+                    {service.description}
+                  </p>
+
+                  <Button
+                    asChild
+                    className="w-full text-lg font-medium rounded-full py-6 transition-all bg-orange-500 text-white hover:bg-orange-600 shadow-md hover:shadow-lg"
+                  >
+                    <span>Detaylı Bilgi</span>
                   </Button>
                 </CardContent>
-              </Card>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Districts Section */}
-      <section className="py-16 bg-white">
+      {/* DISTRICTS */}
+      <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <MapPin className="w-12 h-12 text-orange-500 mx-auto mb-4" />
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <MapPin
+              className="w-12 h-12 text-orange-500 mx-auto mb-4"
+              aria-hidden="true"
+            />
+            <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">
               Hizmet Verdiğimiz İlçeler
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -182,12 +258,13 @@ export default function Homepage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 max-w-5xl mx-auto mb-8">
-            {districts.map((district, index) => (
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 max-w-5xl mx-auto mb-8">
+            {districts.map((district, idx) => (
               <Link
-                key={index}
-                to={`/kombi-servisi-ankara/${district.toLowerCase()}`}
-                className="bg-gradient-to-br from-orange-50 to-red-50 hover:from-orange-100 hover:to-red-100 p-4 rounded-lg text-center font-medium text-gray-800 transition-all hover:shadow-md"
+                key={idx}
+                to={`/kombi-servisi-ankara/${toSlug(district)}`}
+                className="block bg-white border border-orange-100 rounded-2xl p-5 text-center font-medium text-gray-800 shadow-sm transition-transform duration-300 hover:shadow-lg hover:-translate-y-1 hover:bg-orange-50"
+                aria-label={`${district} ilçesinde kombi servisi`}
               >
                 {district}
               </Link>
@@ -202,69 +279,23 @@ export default function Homepage() {
         </div>
       </section>
 
-      {/* Why Choose Us Section with Image Background */}
-      <section className="py-16 bg-gradient-to-br from-gray-900 to-gray-800 text-white relative overflow-hidden">
-        {/* Background Image Area */}
-        <div className="absolute inset-0 opacity-10">
-          <img
-            src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1200&q=80"
-            alt="Profesyonel Servis"
-            className="w-full h-full object-cover"
-          />
-        </div>
-
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-              Neden Bizi Tercih Etmelisiniz?
-            </h2>
-
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="text-center">
-                <Clock className="w-12 h-12 text-orange-400 mx-auto mb-4" />
-                <h3 className="text-xl font-bold mb-2">7/24 Hizmet</h3>
-                <p className="text-gray-300">
-                  Hafta sonu ve tatil günleri dahil her zaman yanınızdayız.
-                </p>
-              </div>
-
-              <div className="text-center">
-                <Shield className="w-12 h-12 text-orange-400 mx-auto mb-4" />
-                <h3 className="text-xl font-bold mb-2">Garantili İşçilik</h3>
-                <p className="text-gray-300">
-                  Tüm hizmetlerimizde işçilik garantisi sunuyoruz.
-                </p>
-              </div>
-
-              <div className="text-center">
-                <Wrench className="w-12 h-12 text-orange-400 mx-auto mb-4" />
-                <h3 className="text-xl font-bold mb-2">Uzman Kadro</h3>
-                <p className="text-gray-300">
-                  Deneyimli ve sertifikalı teknisyenlerimizle hizmetinizdeyiz.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-orange-500 to-red-600 text-white">
+      {/* CTA */}
+      <section className="py-16 bg-gray-100 text-gray-900">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <h2 className="text-3xl md:text-4xl font-extrabold mb-4">
             Kombi Sorunlarınız İçin Hemen Arayın!
           </h2>
-          <p className="text-xl mb-8 text-orange-50">
+          <p className="text-xl mb-8 text-gray-700">
             Uzman ekibimiz size yardımcı olmak için hazır
           </p>
+
           <Button
             asChild
             size="lg"
-            className="bg-white text-orange-600 hover:bg-gray-100 text-lg px-8"
+            className="inline-flex items-center gap-3 bg-orange-500 text-white hover:bg-orange-600 font-semibold rounded-full shadow-md hover:shadow-lg transition-all px-6 py-3"
           >
-            <a href="tel:+905539354340">
-              <Phone className="w-5 h-5 mr-2" />
-              0553 935 43 40
+            <a href="tel:+905539354340" className="flex items-center">
+              <Phone className="w-5 h-5" /> <span>0553 935 43 40</span>
             </a>
           </Button>
         </div>
