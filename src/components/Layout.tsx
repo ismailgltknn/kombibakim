@@ -8,6 +8,8 @@ interface LayoutProps {
   children: ReactNode;
 }
 
+const GA_MEASUREMENT_ID = "G-XXXXXXXXXX"; // GA4 ID eklenecek
+
 export default function Layout({ children }: LayoutProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -20,11 +22,36 @@ export default function Layout({ children }: LayoutProps) {
     window.scrollTo(0, 0);
   }, [location.pathname]);
 
+  // GA4 pageview tracking
+  useEffect(() => {
+    if (!document.querySelector("#gtag-script")) {
+      const script = document.createElement("script");
+      script.id = "gtag-script";
+      script.async = true;
+      script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
+      document.head.appendChild(script);
+
+      const inlineScript = document.createElement("script");
+      inlineScript.innerHTML = `
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '${GA_MEASUREMENT_ID}', { page_path: window.location.pathname });
+      `;
+      document.head.appendChild(inlineScript);
+    }
+
+    // Route değişimlerinde pageview gönder
+    if ((window as any).gtag) {
+      (window as any).gtag("config", GA_MEASUREMENT_ID, {
+        page_path: location.pathname,
+      });
+    }
+  }, [location.pathname]);
+
   // Show scroll-to-top button
   useEffect(() => {
-    const handleScroll = () => {
-      setShowScrollTop(window.scrollY > 300);
-    };
+    const handleScroll = () => setShowScrollTop(window.scrollY > 300);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -43,9 +70,8 @@ export default function Layout({ children }: LayoutProps) {
   ];
 
   const handleNavClick = (href: string) => {
-    if (href === location.pathname) {
+    if (href === location.pathname)
       window.scrollTo({ top: 0, behavior: "smooth" });
-    }
     setMobileMenuOpen(false);
   };
 
