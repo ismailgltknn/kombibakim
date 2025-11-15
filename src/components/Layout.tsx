@@ -1,8 +1,8 @@
-import { ReactNode, useEffect } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Phone, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { ArrowUp } from "lucide-react";
 
 interface LayoutProps {
   children: ReactNode;
@@ -10,6 +10,7 @@ interface LayoutProps {
 
 export default function Layout({ children }: LayoutProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [showScrollTop, setShowScrollTop] = useState(false);
   const location = useLocation();
 
   const isActive = (path: string) => location.pathname === path;
@@ -18,6 +19,19 @@ export default function Layout({ children }: LayoutProps) {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location.pathname]);
+
+  // Show scroll-to-top button
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 300);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   const navLinks = [
     { href: "/", label: "Ana Sayfa" },
@@ -28,14 +42,25 @@ export default function Layout({ children }: LayoutProps) {
     { href: "/iletisim", label: "İletişim" },
   ];
 
+  const handleNavClick = (href: string) => {
+    if (href === location.pathname) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+    setMobileMenuOpen(false);
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
       {/* Header */}
-      <header className="bg-white shadow-sm sticky top-0 z-50">
+      <header className="bg-white shadow sticky top-0 z-50">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
-            <Link to="/" className="flex items-center space-x-2">
+            <Link
+              to="/"
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              className="flex items-center space-x-2"
+            >
               <div className="w-10 h-10 bg-gradient-to-br from-orange-500 to-red-600 rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-md">Logo</span>
               </div>
@@ -45,31 +70,36 @@ export default function Layout({ children }: LayoutProps) {
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center space-x-1">
+            <nav className="hidden lg:flex items-center space-x-2">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   to={link.href}
-                  className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
-                    isActive(link.href)
-                      ? "bg-orange-50 text-orange-600"
-                      : "text-gray-700 hover:bg-gray-100"
-                  }`}
+                  onClick={() => handleNavClick(link.href)}
+                  className={`
+                    px-6 py-3 text-sm font-semibold rounded-sm transition-all duration-300
+                    ${
+                      isActive(link.href)
+                        ? "bg-gradient-to-r from-orange-500 to-red-500 text-white shadow-lg"
+                        : "text-gray-700 hover:bg-gray-100 hover:text-orange-500"
+                    }
+                  `}
                 >
                   {link.label}
                 </Link>
               ))}
             </nav>
 
-            {/* CTA Buttons */}
-            <div className="flex items-center space-x-2">
+            {/* CTA & Mobile Menu */}
+            <div className="flex items-center space-x-3">
+              {/* Desktop CTA */}
               <Button
                 asChild
                 size="sm"
-                className="hidden sm:flex bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700"
+                className="hidden sm:flex px-5 py-2 rounded-sm font-semibold text-white bg-gradient-to-r from-orange-500 to-red-500 shadow-md hover:from-orange-600 hover:to-red-600 hover:shadow-lg transition-all"
               >
-                <a href="tel:+905539354340">
-                  <Phone className="w-4 h-4 mr-2" />
+                <a href="tel:+905539354340" className="flex items-center gap-2">
+                  <Phone className="w-4 h-4" />
                   Hemen Ara
                 </a>
               </Button>
@@ -78,13 +108,14 @@ export default function Layout({ children }: LayoutProps) {
               <Button
                 variant="ghost"
                 size="sm"
-                className="lg:hidden"
+                className="lg:hidden p-2 rounded-full hover:bg-gray-100 transition-colors"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                aria-label={mobileMenuOpen ? "Menüyü Kapat" : "Menüyü Aç"}
               >
                 {mobileMenuOpen ? (
-                  <X className="w-5 h-5" />
+                  <X className="w-5 h-5 text-gray-700" />
                 ) : (
-                  <Menu className="w-5 h-5" />
+                  <Menu className="w-5 h-5 text-gray-700" />
                 )}
               </Button>
             </div>
@@ -92,29 +123,33 @@ export default function Layout({ children }: LayoutProps) {
 
           {/* Mobile Navigation */}
           {mobileMenuOpen && (
-            <nav className="lg:hidden py-4 border-t">
-              <div className="flex flex-col space-y-2">
+            <nav className="lg:hidden py-4 border-t border-gray-200 bg-white">
+              <div className="flex flex-col space-y-3 px-4">
                 {navLinks.map((link) => (
                   <Link
                     key={link.href}
                     to={link.href}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+                    onClick={() => handleNavClick(link.href)}
+                    className={`w-full text-center py-3 rounded-sm font-medium text-sm transition-all ${
                       isActive(link.href)
-                        ? "bg-orange-50 text-orange-600"
-                        : "text-gray-700 hover:bg-gray-100"
+                        ? "bg-orange-500 text-white shadow-md"
+                        : "text-gray-700 hover:bg-orange-100 hover:shadow-sm"
                     }`}
                   >
                     {link.label}
                   </Link>
                 ))}
+
                 <Button
                   asChild
                   size="sm"
-                  className="bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 sm:hidden"
+                  className="w-full px-5 py-3 rounded-sm font-semibold text-white bg-gradient-to-r from-orange-500 to-red-500 shadow-md hover:from-orange-600 hover:to-red-600 hover:shadow-lg transition-all"
                 >
-                  <a href="tel:+905539354340">
-                    <Phone className="w-4 h-4 mr-2" />
+                  <a
+                    href="tel:+905539354340"
+                    className="flex items-center justify-center gap-2"
+                  >
+                    <Phone className="w-4 h-4" />
                     Hemen Ara
                   </a>
                 </Button>
@@ -129,73 +164,59 @@ export default function Layout({ children }: LayoutProps) {
 
       {/* Footer */}
       <footer className="bg-gray-900 text-gray-300 mt-auto">
-        <div className="container mx-auto px-4 py-12">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="container mx-auto px-4 py-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
             {/* Company Info */}
             <div>
-              <h3 className="text-white font-bold text-lg mb-4">
+              <h3 className="text-white font-bold text-xl mb-4">
                 Ankara Kombi Servisi
               </h3>
-              <p className="text-sm mb-4">
+              <p className="text-gray-400 mb-4 text-sm">
                 Ankara'nın tüm ilçelerinde 7/24 profesyonel kombi bakım ve tamir
                 hizmeti.
               </p>
               <Button
                 asChild
                 size="sm"
-                className="bg-orange-500 hover:bg-orange-600"
+                className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 shadow-md rounded-full px-4 py-2 text-white font-semibold transition-all"
               >
-                <a href="tel:+905539354340">
-                  <Phone className="w-4 h-4 mr-2" />
+                <a href="tel:+905539354340" className="flex items-center gap-2">
+                  <Phone className="w-4 h-4" />
                   0553 935 43 40
                 </a>
               </Button>
             </div>
 
             {/* Quick Links */}
-            <div>
-              <h4 className="text-white font-semibold mb-4">Hızlı Linkler</h4>
+            <nav aria-label="Footer Hızlı Linkler">
+              <h4 className="text-white font-semibold mb-4 text-lg">
+                Hızlı Linkler
+              </h4>
               <ul className="space-y-2 text-sm">
-                <li>
-                  <Link to="/" className="hover:text-orange-400 transition">
-                    Ana Sayfa
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/hakkimizda"
-                    className="hover:text-orange-400 transition"
-                  >
-                    Hakkımızda
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/hizmetler"
-                    className="hover:text-orange-400 transition"
-                  >
-                    Hizmetler
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/iletisim"
-                    className="hover:text-orange-400 transition"
-                  >
-                    İletişim
-                  </Link>
-                </li>
+                {navLinks.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      to={link.href}
+                      onClick={() => handleNavClick(link.href)}
+                      className="hover:text-orange-400 transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
               </ul>
-            </div>
+            </nav>
 
             {/* Services */}
-            <div>
-              <h4 className="text-white font-semibold mb-4">Hizmetlerimiz</h4>
+            <nav aria-label="Footer Hizmetlerimiz">
+              <h4 className="text-white font-semibold mb-4 text-lg">
+                Hizmetlerimiz
+              </h4>
               <ul className="space-y-2 text-sm">
                 <li>
                   <Link
                     to="/hizmetler/bakim"
-                    className="hover:text-orange-400 transition"
+                    className="hover:text-orange-400 transition-colors"
                   >
                     Kombi Bakım
                   </Link>
@@ -203,7 +224,7 @@ export default function Layout({ children }: LayoutProps) {
                 <li>
                   <Link
                     to="/hizmetler/tamir"
-                    className="hover:text-orange-400 transition"
+                    className="hover:text-orange-400 transition-colors"
                   >
                     Kombi Tamir
                   </Link>
@@ -211,27 +232,43 @@ export default function Layout({ children }: LayoutProps) {
                 <li>
                   <Link
                     to="/kombi-servisi-ankara"
-                    className="hover:text-orange-400 transition"
+                    className="hover:text-orange-400 transition-colors"
                   >
                     Ankara İlçeleri
                   </Link>
                 </li>
               </ul>
-            </div>
+            </nav>
 
             {/* Contact */}
             <div>
-              <h4 className="text-white font-semibold mb-4">İletişim</h4>
-              <ul className="space-y-2 text-sm">
-                <li>Telefon: 0553 935 43 40</li>
-                <li>Email: info@ankarakombi.com</li>
-                <li>Adres: Ankara, Türkiye</li>
-                <li>Çalışma Saatleri: 7/24</li>
+              <h4 className="text-white font-semibold mb-4 text-lg">
+                İletişim
+              </h4>
+              <ul className="space-y-2 text-sm text-gray-400">
+                <li>
+                  <span className="font-medium text-gray-300">Telefon:</span>{" "}
+                  0553 935 43 40
+                </li>
+                <li>
+                  <span className="font-medium text-gray-300">Email:</span>{" "}
+                  info@ankarakombi.com
+                </li>
+                <li>
+                  <span className="font-medium text-gray-300">Adres:</span>{" "}
+                  Ankara, Türkiye
+                </li>
+                <li>
+                  <span className="font-medium text-gray-300">
+                    Çalışma Saatleri:
+                  </span>{" "}
+                  7/24
+                </li>
               </ul>
             </div>
           </div>
 
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm">
+          <div className="border-t border-gray-800 mt-12 pt-6 text-center text-sm text-gray-500">
             <p>
               © {new Date().getFullYear()} Ankara Kombi Servisi. Tüm hakları
               saklıdır.
@@ -239,6 +276,17 @@ export default function Layout({ children }: LayoutProps) {
           </div>
         </div>
       </footer>
+
+      {/* Scroll To Top Button */}
+      {showScrollTop && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-8 right-8 w-10 h-10 bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-sm shadow-md flex items-center justify-center hover:from-orange-600 hover:to-red-600 transition-all z-50"
+          aria-label="Sayfanın üstüne git"
+        >
+          <ArrowUp className="w-5 h-5" />
+        </button>
+      )}
     </div>
   );
 }
