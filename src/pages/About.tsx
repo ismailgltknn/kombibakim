@@ -31,46 +31,44 @@ export default function About() {
     <Layout>
       <SEO
         title="Hakkımızda | Ankara Kombi Servisi"
-        description="Ankara'da 10 yılı aşkın tecrübesiyle güvenilir kombi bakım ve tamir hizmeti sunan profesyonel ekibimizi tanıyın."
+        description="Ankara'da 10 yılı aşkın tecrübesiyle güvenilir kombi bakım ve kombi tamir hizmeti sunan profesyonel ekibimizi tanıyın."
         keywords="ankara kombi servisi hakkında, kombi servisi ekibi, profesyonel kombi tamiri"
       />
 
       <div className="bg-white">
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-orange-500 to-red-600 text-white py-16">
+        <section className="bg-gradient-to-r from-orange-500 to-red-600 text-white py-20">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">
+              <h1 className="text-5xl md:text-6xl font-extrabold mb-6 drop-shadow-md">
                 Hakkımızda
               </h1>
-              <p className="text-xl text-orange-50">
-                Ankara'nın güvenilir kombi servisi
+              <p className="text-xl md:text-2xl text-orange-100/90 drop-shadow-sm">
+                Ankara'nın güvenilir kombi servisi ile tanışın
               </p>
             </div>
           </div>
         </section>
 
         {/* About Content */}
-        <section className="py-16">
+        <section className="py-20">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
-              <div className="prose prose-lg max-w-none">
-                <p className="text-lg text-gray-700 mb-6">
+              <div className="prose prose-lg max-w-none text-gray-700">
+                <p>
                   Ankara Kombi Servisi olarak, 10 yılı aşkın süredir Ankara'nın
                   tüm ilçelerinde profesyonel kombi bakım ve tamir hizmeti
                   sunuyoruz. Müşteri memnuniyetini ön planda tutan anlayışımız
                   ve uzman kadromuzla, kombilerinizin güvenli ve verimli
                   çalışmasını sağlıyoruz.
                 </p>
-
-                <p className="text-lg text-gray-700 mb-6">
+                <p>
                   Tüm marka ve modellerde kombi servisi konusunda uzmanlaşmış
                   ekibimiz, 7/24 hizmet vermektedir. Düzenli bakım, arıza
                   tamiri, petek temizliği ve kombi montajı gibi tüm
                   ihtiyaçlarınız için yanınızdayız.
                 </p>
-
-                <p className="text-lg text-gray-700">
+                <p>
                   Sertifikalı teknisyenlerimiz, en son teknoloji ekipmanlar
                   kullanarak hızlı ve kaliteli hizmet sunmaktadır. Garantili
                   işçilik ve uygun fiyat politikamızla Ankara'nın en çok tercih
@@ -82,17 +80,20 @@ export default function About() {
         </section>
 
         {/* Values Section */}
-        <section className="py-16 bg-gray-50">
+        <section className="py-20 bg-gray-50">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">
+            <h2 className="text-4xl md:text-5xl font-extrabold text-center text-gray-900 mb-12">
               Değerlerimiz
             </h2>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
               {values.map((value, index) => (
-                <Card key={index} className="text-center border-orange-100">
+                <Card
+                  key={index}
+                  className="text-center border border-gray-200 hover:shadow-lg transition-shadow duration-300"
+                >
                   <CardContent className="pt-8 pb-6">
-                    <value.icon className="w-12 h-12 text-orange-500 mx-auto mb-4" />
+                    <value.icon className="w-14 h-14 text-orange-500 mx-auto mb-4" />
                     <h3 className="text-xl font-bold text-gray-900 mb-2">
                       {value.title}
                     </h3>

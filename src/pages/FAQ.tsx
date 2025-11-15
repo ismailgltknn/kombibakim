@@ -55,24 +55,26 @@ export default function FAQ() {
     <Layout>
       <SEO
         title="Sık Sorulan Sorular | Ankara Kombi Servisi"
-        description="Kombi bakımı, tamiri ve servisi hakkında sık sorulan sorular ve cevapları. Kombi ile ilgili merak ettikleriniz."
+        description="Kombi bakımı, kombi tamiri ve kombi servisi hakkında sık sorulan sorular ve cevapları. Kombi ile ilgili tüm merak ettiğiniz sorular."
         keywords="kombi sss, kombi soruları, kombi bakım soruları"
       />
 
       <div className="bg-white">
-        <section className="bg-gradient-to-br from-orange-500 to-red-600 text-white py-16">
+        {/* HERO SECTION */}
+        <section className="bg-gradient-to-b from-orange-50 to-white py-16 border-b border-orange-100">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">
+              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-5">
                 Sık Sorulan Sorular
               </h1>
-              <p className="text-xl text-orange-50">
-                Kombi servisi hakkında merak ettikleriniz
+              <p className="text-lg md:text-xl text-gray-700">
+                Kombi servisi hakkında merak edilen tüm sorulara yanıt verdik.
               </p>
             </div>
           </div>
         </section>
 
+        {/* FAQ LIST */}
         <section className="py-16">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto">
@@ -81,12 +83,13 @@ export default function FAQ() {
                   <AccordionItem
                     key={index}
                     value={`item-${index}`}
-                    className="border border-orange-100 rounded-lg px-6 bg-white"
+                    className="rounded-xl border border-orange-100 bg-white shadow-sm hover:shadow-md transition-all"
                   >
-                    <AccordionTrigger className="text-left font-semibold text-gray-900 hover:text-orange-600">
+                    <AccordionTrigger className="text-left font-semibold text-gray-900 px-6 py-4 hover:text-orange-600">
                       {faq.question}
                     </AccordionTrigger>
-                    <AccordionContent className="text-gray-700">
+
+                    <AccordionContent className="text-gray-700 px-6 pb-4">
                       {faq.answer}
                     </AccordionContent>
                   </AccordionItem>

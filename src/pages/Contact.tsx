@@ -17,7 +17,6 @@ export default function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Form submission logic here
     alert("Mesajınız alındı! En kısa sürede size dönüş yapacağız.");
     setFormData({ name: "", phone: "", email: "", message: "" });
   };
@@ -26,37 +25,42 @@ export default function Contact() {
     <Layout>
       <SEO
         title="İletişim | Ankara Kombi Servisi"
-        description="Ankara Kombi Servisi ile iletişime geçin. 7/24 acil servis hattı: 0553 935 43 40. Kombi bakım ve tamir için hemen arayın."
+        description="Ankara Kombi Servisi ile iletişime geçin. 7/24 acil servis hattı: 0553 935 43 40. Kombi bakım, tamir ve montaj hizmetleri için hemen ulaşın."
         keywords="ankara kombi servisi iletişim, kombi servisi telefon, acil kombi servisi"
       />
 
       <div className="bg-white">
-        <section className="bg-gradient-to-br from-orange-500 to-red-600 text-white py-16">
+        {/* HERO SECTION */}
+        <section className="bg-gradient-to-b from-orange-50 to-white py-16 border-b border-orange-100">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">İletişim</h1>
-              <p className="text-xl text-orange-50">
+              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-5">
+                İletişim
+              </h1>
+              <p className="text-lg md:text-xl text-gray-700">
                 Size nasıl yardımcı olabiliriz?
               </p>
             </div>
           </div>
         </section>
 
+        {/* CONTACT SECTION */}
         <section className="py-16">
           <div className="container mx-auto px-4">
             <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-              {/* Contact Form */}
+              {/* CONTACT FORM */}
               <div>
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">
                   Bize Ulaşın
                 </h2>
+
                 <form onSubmit={handleSubmit} className="space-y-6">
+                  {/* NAME */}
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       Adınız Soyadınız
                     </label>
                     <Input
-                      type="text"
                       required
                       value={formData.name}
                       onChange={(e) =>
@@ -66,6 +70,7 @@ export default function Contact() {
                     />
                   </div>
 
+                  {/* PHONE */}
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       Telefon Numaranız
@@ -81,6 +86,7 @@ export default function Contact() {
                     />
                   </div>
 
+                  {/* EMAIL */}
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       E-posta Adresiniz
@@ -95,49 +101,51 @@ export default function Contact() {
                     />
                   </div>
 
+                  {/* MESSAGE */}
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       Mesajınız
                     </label>
                     <Textarea
                       required
+                      rows={6}
                       value={formData.message}
                       onChange={(e) =>
                         setFormData({ ...formData, message: e.target.value })
                       }
                       placeholder="Lütfen ihtiyacınızı detaylı olarak belirtin..."
-                      rows={6}
                     />
                   </div>
 
                   <Button
                     type="submit"
                     size="lg"
-                    className="w-full bg-gradient-to-r from-orange-500 to-red-600"
+                    className="w-full bg-orange-600 hover:bg-orange-700 text-white font-semibold"
                   >
                     Gönder
                   </Button>
                 </form>
               </div>
 
-              {/* Contact Info */}
+              {/* CONTACT INFO */}
               <div>
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">
                   İletişim Bilgileri
                 </h2>
 
                 <div className="space-y-6">
-                  <Card className="border-orange-100">
+                  {/* PHONE */}
+                  <Card className="border-orange-100 shadow-sm hover:shadow-md transition-all rounded-xl">
                     <CardContent className="p-6">
                       <div className="flex items-start space-x-4">
-                        <Phone className="w-6 h-6 text-orange-500 flex-shrink-0 mt-1" />
+                        <Phone className="w-6 h-6 text-orange-600 mt-1" />
                         <div>
-                          <h3 className="font-semibold text-gray-900 mb-2">
+                          <h3 className="font-semibold text-gray-900 mb-1">
                             Telefon
                           </h3>
                           <a
                             href="tel:+905539354340"
-                            className="text-orange-600 hover:text-orange-700 font-medium"
+                            className="text-orange-600 font-medium hover:text-orange-700"
                           >
                             0553 935 43 40
                           </a>
@@ -149,12 +157,13 @@ export default function Contact() {
                     </CardContent>
                   </Card>
 
-                  <Card className="border-orange-100">
+                  {/* EMAIL */}
+                  <Card className="border-orange-100 shadow-sm hover:shadow-md transition-all rounded-xl">
                     <CardContent className="p-6">
                       <div className="flex items-start space-x-4">
-                        <Mail className="w-6 h-6 text-orange-500 flex-shrink-0 mt-1" />
+                        <Mail className="w-6 h-6 text-orange-600 mt-1" />
                         <div>
-                          <h3 className="font-semibold text-gray-900 mb-2">
+                          <h3 className="font-semibold text-gray-900 mb-1">
                             E-posta
                           </h3>
                           <a
@@ -168,29 +177,31 @@ export default function Contact() {
                     </CardContent>
                   </Card>
 
-                  <Card className="border-orange-100">
+                  {/* ADDRESS */}
+                  <Card className="border-orange-100 shadow-sm hover:shadow-md transition-all rounded-xl">
                     <CardContent className="p-6">
                       <div className="flex items-start space-x-4">
-                        <MapPin className="w-6 h-6 text-orange-500 flex-shrink-0 mt-1" />
+                        <MapPin className="w-6 h-6 text-orange-600 mt-1" />
                         <div>
-                          <h3 className="font-semibold text-gray-900 mb-2">
+                          <h3 className="font-semibold text-gray-900 mb-1">
                             Adres
                           </h3>
                           <p className="text-gray-700">Ankara, Türkiye</p>
                           <p className="text-sm text-gray-600 mt-1">
-                            Tüm ilçelere hizmet veriyoruz
+                            Tüm ilçelere hızlı servis
                           </p>
                         </div>
                       </div>
                     </CardContent>
                   </Card>
 
-                  <Card className="border-orange-100">
+                  {/* HOURS */}
+                  <Card className="border-orange-100 shadow-sm hover:shadow-md transition-all rounded-xl">
                     <CardContent className="p-6">
                       <div className="flex items-start space-x-4">
-                        <Clock className="w-6 h-6 text-orange-500 flex-shrink-0 mt-1" />
+                        <Clock className="w-6 h-6 text-orange-600 mt-1" />
                         <div>
-                          <h3 className="font-semibold text-gray-900 mb-2">
+                          <h3 className="font-semibold text-gray-900 mb-1">
                             Çalışma Saatleri
                           </h3>
                           <p className="text-gray-700">7/24 Hizmet</p>

@@ -7,75 +7,89 @@ import { AlertCircle, Phone } from "lucide-react";
 
 export default function Repair() {
   const commonIssues = [
-    "Kombi çalışmıyor",
+    "Kombi hiç çalışmıyor",
     "Sıcak su gelmiyor",
-    "Kalorifer ısınmıyor",
-    "Kombi hata veriyor",
-    "Basınç düşüyor",
-    "Gürültülü çalışma",
-    "Gaz kokusu",
-    "Sık sık kapanma",
+    "Petekler ısınmıyor",
+    "Kombi sürekli hata veriyor",
+    "Basınç hızla düşüyor",
+    "Gürültülü veya titreşimli çalışma",
+    "Gaz kokusu hissediliyor",
+    "Cihaz kendi kendine kapanıyor",
   ];
 
   return (
     <Layout>
       <SEO
-        title="Kombi Tamir Hizmeti | Ankara Kombi Servisi"
-        description="Arızalı kombileriniz için hızlı ve güvenilir tamir hizmeti. Tüm marka kombiler için uzman kadro, aynı gün servis, garantili işçilik."
-        keywords="kombi tamir, kombi arıza, kombi onarım, acil kombi servisi"
+        title="Kombi Tamir Hizmeti | Profesyonel Arıza Tespiti ve Onarım"
+        description="Kombi arızalarına hızlı çözümler. Profesyonel tamir hizmeti, orijinal yedek parça, garantili işçilik ve aynı gün servis imkanı."
+        keywords="kombi tamir, kombi arıza tamiri, profesyonel kombi onarım, kombi servis"
       />
+
       <LocalBusinessSchema />
 
       <div className="bg-white">
-        <section className="bg-gradient-to-br from-orange-500 to-red-600 text-white py-16">
+        {/* HERO */}
+        <section className="bg-gradient-to-br from-orange-500 to-red-600 text-white py-20">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                Kombi Tamir Hizmeti
+                Profesyonel Kombi Tamir Hizmeti
               </h1>
-              <p className="text-xl text-orange-50 mb-8">
-                Hızlı teşhis, garantili onarım
+              <p className="text-xl text-orange-50 mb-8 leading-relaxed">
+                Uzman ekip, hızlı teşhis ve garantili onarım ile aynı gün çözüm
               </p>
+
               <Button
                 asChild
                 size="lg"
-                className="bg-white text-orange-600 hover:bg-gray-100"
+                className="bg-white text-orange-600 hover:bg-gray-100 rounded-full px-8 py-6 text-lg font-semibold shadow-md"
               >
                 <a href="tel:+905539354340">
                   <Phone className="w-5 h-5 mr-2" />
-                  Acil Servis: 0553 935 43 40
+                  Hemen Ara: 0553 935 43 40
                 </a>
               </Button>
             </div>
           </div>
         </section>
 
-        <section className="py-16">
+        {/* DESCRIPTION */}
+        <section className="py-20">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
-              <div className="mb-12">
+              <div className="mb-14">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">
-                  Profesyonel Kombi Tamir Hizmeti
+                  Profesyonel Kombi Arıza Tespit ve Onarım Hizmeti
                 </h2>
-                <p className="text-lg text-gray-700 mb-4">
-                  Kombilerinizde meydana gelen arızalar için 7/24 hızlı ve
-                  güvenilir tamir hizmeti sunuyoruz. Uzman teknisyenlerimiz, tüm
-                  marka ve modellerde arıza tespiti ve onarım konusunda
-                  deneyimlidir.
+
+                <p className="text-lg text-gray-700 mb-4 leading-relaxed">
+                  Kombinizde meydana gelen arızalar, hem konforu hem de
+                  güvenliği olumsuz etkileyebilir. Uzman teknisyenlerimiz, tüm
+                  marka ve modellerde hızlı arıza tespiti ve profesyonel onarım
+                  hizmeti sunmaktadır.
                 </p>
-                <p className="text-lg text-gray-700">
-                  Orijinal yedek parça kullanımı ve garantili işçilik ile
-                  kombilerinizi en kısa sürede çalışır hale getiriyoruz. Aynı
-                  gün servis garantisi ile yanınızdayız.
+
+                <p className="text-lg text-gray-700 leading-relaxed mb-2">
+                  Arızanın kaynağı detaylı şekilde incelenir, gerekli parça
+                  değişimleri orijinal ekipmanlarla yapılır ve kombiniz ilk
+                  günkü performansına yakın şekilde tekrar kullanıma hazır hâle
+                  getirilir.
+                </p>
+
+                <p className="text-lg text-gray-700 leading-relaxed">
+                  Hızlı servis, şeffaf fiyatlandırma ve garantili işçilik ile
+                  güvenle hizmet alabilirsiniz.
                 </p>
               </div>
 
-              <Card className="mb-12 border-orange-100">
-                <CardContent className="p-8">
+              {/* COMMON ISSUES */}
+              <Card className="mb-14 border-orange-100 shadow-sm">
+                <CardContent className="p-10">
                   <h3 className="text-2xl font-bold text-gray-900 mb-6">
-                    Sık Karşılaşılan Arızalar
+                    Sık Karşılaşılan Kombi Arızaları
                   </h3>
-                  <div className="grid md:grid-cols-2 gap-4">
+
+                  <div className="grid md:grid-cols-2 gap-5">
                     {commonIssues.map((issue, index) => (
                       <div key={index} className="flex items-start space-x-3">
                         <AlertCircle className="w-6 h-6 text-orange-500 flex-shrink-0 mt-0.5" />
@@ -86,26 +100,26 @@ export default function Repair() {
                 </CardContent>
               </Card>
 
-              <div className="bg-gradient-to-br from-red-50 to-orange-50 p-8 rounded-lg">
+              {/* CTA */}
+              <div className="bg-gradient-to-br from-red-50 to-orange-50 p-10 rounded-2xl text-center shadow-sm">
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                  Kombi Arızası İçin Hemen Arayın
+                  Kombi Arızası İçin Hemen Bize Ulaşın
                 </h3>
-                <p className="text-gray-700 mb-6">
-                  7/24 acil servis hizmeti ile yanınızdayız. Aynı gün çözüm
-                  garantisi.
+                <p className="text-gray-700 mb-6 text-lg">
+                  7/24 servis, hızlı çözüm ve garantili işçilik ile
+                  yanınızdayız.
                 </p>
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <Button
-                    asChild
-                    size="lg"
-                    className="bg-gradient-to-r from-orange-500 to-red-600"
-                  >
-                    <a href="tel:+905539354340">
-                      <Phone className="w-5 h-5 mr-2" />
-                      0553 935 43 40
-                    </a>
-                  </Button>
-                </div>
+
+                <Button
+                  asChild
+                  size="lg"
+                  className="bg-gradient-to-r from-orange-500 to-red-600 hover:opacity-90 rounded-full px-10 py-6 text-lg text-white font-semibold"
+                >
+                  <a href="tel:+905539354340">
+                    <Phone className="w-5 h-5 mr-2" />
+                    0553 935 43 40
+                  </a>
+                </Button>
               </div>
             </div>
           </div>

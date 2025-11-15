@@ -12,6 +12,8 @@ import {
   Wrench,
   CheckCircle,
   MapPin,
+  Columns,
+  Box,
 } from "lucide-react";
 
 export default function Homepage() {
@@ -82,7 +84,7 @@ export default function Homepage() {
     <Layout>
       <SEO
         title="Ankara Kombi Servisi | 7/24 Profesyonel Kombi Bakım ve Tamir"
-        description="Ankara'nın tüm ilçelerinde 7/24 profesyonel kombi bakım ve tamir hizmeti. Uzman kadro, uygun fiyat, garantili işçilik. Hemen arayın!"
+        description="Ankara'nın tüm ilçelerinde 7/24 profesyonel kombi bakım ve kombi tamir hizmeti. Uzman kadro, uygun fiyat, garantili işçilik. Hemen arayın!"
         keywords="ankara kombi servisi, kombi bakım ankara, kombi tamir ankara, kombi servisi"
       />
 
@@ -194,20 +196,54 @@ export default function Homepage() {
               Hizmetlerimiz
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Ankara genelinde kombi bakım, onarım ve teknik servis hizmetlerini
-              uzman teknisyenlerimizle hızlı ve güvenilir şekilde sunuyoruz.
+              Ankara genelinde kombi bakım, tamir, petek temizliği ve montaj
+              hizmetlerini uzman teknisyenlerimizle hızlı ve güvenilir şekilde
+              sunuyoruz.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
-            {services.map((service, idx) => (
-              <Link
-                to={service.link}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+            {[
+              {
+                title: "Kombi Bakım",
+                description:
+                  "Düzenli bakım ile kombinizin ömrünü uzatın ve verimli çalışmasını sağlayın.",
+                icon: ActivitySquare,
+                link: "/hizmetler/bakim",
+                image: "/images/kombi-bakim-ankara.png",
+              },
+              {
+                title: "Kombi Tamir",
+                description:
+                  "Arızalı kombileriniz için hızlı ve güvenilir tamir hizmeti sunuyoruz.",
+                icon: Wrench,
+                link: "/hizmetler/tamir",
+                image: "/images/kombi-tamir-ankara.png",
+              },
+              {
+                title: "Petek Temizliği",
+                description:
+                  "Peteklerinizin performansını artırmak ve enerji tasarrufu sağlamak için profesyonel petek temizliği hizmeti.",
+                icon: Columns,
+                link: "/hizmetler/petek-temizligi",
+                image: "/images/kombi-bakim-ankara.png",
+              },
+              {
+                title: "Kombi Montaj",
+                description:
+                  "Yeni kombi kurulumlarınızda güvenli ve hızlı montaj hizmeti. Tüm marka ve modellere uygun montaj çözümleri.",
+                icon: Box,
+                link: "/hizmetler/montaj",
+                image: "/images/kombi-tamir-ankara.png",
+              },
+            ].map((service, idx) => (
+              <a
+                href={service.link}
                 key={idx}
-                className="group cursor-pointer transition-all duration-300 rounded-2xl border border-gray-200 overflow-hidden bg-white hover:shadow-2xl hover:-translate-y-1"
+                className="group flex flex-col rounded-2xl border border-gray-200 overflow-hidden bg-white hover:shadow-2xl hover:-translate-y-1 transition-all duration-300"
               >
                 {/* Image */}
-                <div className="h-56 relative overflow-hidden">
+                <div className="h-48 relative overflow-hidden">
                   <img
                     src={service.image}
                     alt={`${service.title} | Ankara Kombi Servisi`}
@@ -217,25 +253,24 @@ export default function Homepage() {
                 </div>
 
                 {/* Card Content */}
-                <CardContent className="p-8">
-                  <service.icon className="w-12 h-12 text-orange-500 mb-4" />
-
-                  <h3 className="text-2xl font-bold text-gray-900 mb-3">
-                    {service.title}
-                  </h3>
-
-                  <p className="text-gray-600 leading-relaxed mb-6">
-                    {service.description}
-                  </p>
+                <CardContent className="flex flex-col flex-1 justify-between p-6 text-center">
+                  <div>
+                    <service.icon className="w-12 h-12 text-orange-500 mx-auto mb-4" />
+                    <h3 className="text-xl font-bold text-gray-900 mb-3">
+                      {service.title}
+                    </h3>
+                    <p className="text-gray-600 mb-6">{service.description}</p>
+                  </div>
 
                   <Button
                     asChild
-                    className="w-full text-lg font-medium rounded-full py-6 transition-all bg-orange-500 text-white hover:bg-orange-600 shadow-md hover:shadow-lg"
+                    size="sm"
+                    className="w-full bg-gradient-to-r from-orange-500 to-red-500 text-white hover:from-orange-600 hover:to-red-600 shadow-md rounded-full transition-all py-3 mt-auto"
                   >
                     <span>Detaylı Bilgi</span>
                   </Button>
                 </CardContent>
-              </Link>
+              </a>
             ))}
           </div>
         </div>
