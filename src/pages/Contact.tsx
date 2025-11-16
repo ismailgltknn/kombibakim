@@ -1,26 +1,9 @@
 import Layout from "@/components/Layout";
 import SEO from "@/components/SEO";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
-import { useState } from "react";
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
-    email: "",
-    message: "",
-  });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    alert("Mesajınız alındı! En kısa sürede size dönüş yapacağız.");
-    setFormData({ name: "", phone: "", email: "", message: "" });
-  };
-
   return (
     <Layout>
       <SEO
@@ -48,86 +31,7 @@ export default function Contact() {
         <section className="py-16">
           <div className="container mx-auto px-4">
             <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-              {/* CONTACT FORM */}
-              <div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">
-                  Bize Ulaşın
-                </h2>
-
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  {/* NAME */}
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Adınız Soyadınız
-                    </label>
-                    <Input
-                      required
-                      value={formData.name}
-                      onChange={(e) =>
-                        setFormData({ ...formData, name: e.target.value })
-                      }
-                      placeholder="Adınız ve soyadınız"
-                    />
-                  </div>
-
-                  {/* PHONE */}
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Telefon Numaranız
-                    </label>
-                    <Input
-                      type="tel"
-                      required
-                      value={formData.phone}
-                      onChange={(e) =>
-                        setFormData({ ...formData, phone: e.target.value })
-                      }
-                      placeholder="0553 935 43 40"
-                    />
-                  </div>
-
-                  {/* EMAIL */}
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      E-posta Adresiniz
-                    </label>
-                    <Input
-                      type="email"
-                      value={formData.email}
-                      onChange={(e) =>
-                        setFormData({ ...formData, email: e.target.value })
-                      }
-                      placeholder="ornek@email.com"
-                    />
-                  </div>
-
-                  {/* MESSAGE */}
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Mesajınız
-                    </label>
-                    <Textarea
-                      required
-                      rows={6}
-                      value={formData.message}
-                      onChange={(e) =>
-                        setFormData({ ...formData, message: e.target.value })
-                      }
-                      placeholder="Lütfen ihtiyacınızı detaylı olarak belirtin..."
-                    />
-                  </div>
-
-                  <Button
-                    type="submit"
-                    size="lg"
-                    className="w-full bg-orange-600 hover:bg-orange-700 text-white font-semibold"
-                  >
-                    Gönder
-                  </Button>
-                </form>
-              </div>
-
-              {/* CONTACT INFO */}
+              {/* LEFT COLUMN — CONTACT INFO */}
               <div>
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">
                   İletişim Bilgileri
@@ -212,6 +116,23 @@ export default function Contact() {
                       </div>
                     </CardContent>
                   </Card>
+                </div>
+              </div>
+
+              {/* RIGHT COLUMN — GOOGLE MAP */}
+              <div>
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">Konum</h2>
+
+                <div className="rounded-xl overflow-hidden shadow-md border border-orange-100">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d1391.6826576638425!2d32.647553767656035!3d39.93504481442322!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMznCsDU2JzA2LjIiTiAzMsKwMzgnNTEuMSJF!5e0!3m2!1str!2str!4v1763292010084!5m2!1str!2str"
+                    width="100%"
+                    height="400"
+                    style={{ border: 0 }}
+                    allowFullScreen={false}
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  ></iframe>
                 </div>
               </div>
             </div>
